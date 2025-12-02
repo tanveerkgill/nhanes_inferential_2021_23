@@ -1,44 +1,58 @@
-# nhanes_inferential_2021_23
-NHANES 2021-2023 Inferential Analytics Assignment
-Objective
-Use the NHANES data to perform basic inferential statistics using Python in Google Colab. You will explore relationships and differences in health metrics and demographic variables, utilizing the skills learned in class to answer key questions about the dataset. Your final analysis should be saved as a Google Colab notebook and uploaded to a GitHub repository.
+# NHANES Inferential Analysis 2021–2023
 
-NHANES Data: NHANES 2021-2023
-Data Preparation
-To start, you’ll use the following NHANES variables for analysis:
+This repository contains my inferential statistics project using NHANES 2021–2023 data.  
+All analysis is done in the Jupyter/Colab notebook `nhanes_inferential_2021_23.ipynb`.
 
-Marital Status (DMDMARTZ) - categorical, needs recoding (married or not married).
-Education Level (DMDEDUC2) - categorical, needs recoding (bachelor’s or higher vs. less than bachelor’s).
-Age in Years (RIDAGEYR) - continuous.
-Systolic Blood Pressure (BPXOSY3) - continuous.
-Diastolic Blood Pressure (BPXODI3) - continuous.
-Vitamin D Lab Interpretation (LBDVD2LC) - categorical, two levels.
-Hepatitis B Lab Antibodies (LBXHBS) - categorical, needs recoding to two levels.
-Weak/Failing Kidneys (KIQ022) - categorical, can be treated as two levels.
-Minutes of Sedentary Behavior (PAD680) - continuous, needs cleaning (remove values 7777, 9999, and null).
-Current Self-Reported Weight (WHD020) - continuous, needs cleaning (remove values 7777, 9999, and null).
-Instructions
-Create Your GitHub Repository
+## Data
 
-Create a new GitHub repository titled nhanes_inferential_2021_23.
-Include a README.md file that briefly describes the project and the analyses you are performing for each of the questions.
-Complete the Analysis in Google Colab
+The analysis uses selected variables from the NHANES 2021–2023 cycles, including:
 
-Use Google Colab to conduct your analysis. Your notebook should be well-documented with explanations of each step just as like we have done in the class notebooks.
-Questions for Analysis
+- DMDMARTZ – Marital status (recoded to married vs not married)
+- DMDEDUC2 – Education level (recoded to bachelor’s degree or higher vs less than bachelor’s)
+- RIDAGEYR – Age in years
+- BPXOSY3 – Systolic blood pressure
+- PAD680 – Minutes of sedentary behavior (cleaned: removed 7777, 9999, and missing)
+- WHD020 – Self-reported weight (cleaned: removed 7777, 9999, and missing)
 
-Use the questions below to guide your analysis. Remember to transform or recode variables where needed as specified, and determine the appropriate statistical tests that should be performed based on the question and variables.
+## Analyses
 
-Question 1: "Is there an association between marital status (married or not married) and education level (bachelor’s degree or higher vs. less than a bachelor’s degree)?"
+The notebook is organized by question:
 
-Variables: DMDMARTZ (marital status) and DMDEDUC2 (education level). Recode as specified.
-Question 2: "Is there a difference in the mean sedentary behavior time between those who are married and those who are not married?"
+1. **Marital status vs education (association)**
+   - Question: Is there an association between marital status and education level?
+   - Variables: DMDMARTZ (recoded), DMDEDUC2 (recoded)
+   - Method: Chi-square test of independence
+   - Output: Contingency table and chi-square results, plus a short interpretation.
 
-Variables: DMDMARTZ (marital status, recoded) and PAD680 (sedentary behavior time, cleaned).
-Question 3: "How do age and marital status affect systolic blood pressure?"
+2. **Sedentary time by marital status**
+   - Question: Is there a difference in mean sedentary behavior time between married and not married participants?
+   - Variables: DMDMARTZ (recoded), PAD680 (cleaned)
+   - Method: Two-sample t-test (or appropriate alternative, depending on assumptions)
+   - Output: Descriptive stats, visualization (e.g., boxplot), and interpretation.
 
-Variables: RIDAGEYR (age), DMDMARTZ (marital status, recoded), and BPXOSY3 (systolic blood pressure).
-Question 4: "Is there a correlation between self-reported weight and minutes of sedentary behavior?"
+3. **Effects of age and marital status on systolic blood pressure**
+   - Question: How do age and marital status affect systolic blood pressure?
+   - Variables: RIDAGEYR, DMDMARTZ (recoded), BPXOSY3
+   - Method: Regression or ANOVA-style model including age and marital status
+   - Output: Model summary and brief explanation of effects.
 
-Variables: WHD020 (self-reported weight, cleaned) and PAD680 (sedentary behavior time, cleaned).
-Question 5 (Creative Analysis): Develop your own unique question using at least one of the variables listed above. Ensure that your question can be answered using one of the following tests: chi-square, t-test, ANOVA, or correlation. Clearly state your question, explain why you chose the test, and document your findings.
+4. **Correlation between weight and sedentary time**
+   - Question: Is there a correlation between self-reported weight and minutes of sedentary behavior?
+   - Variables: WHD020 (cleaned), PAD680 (cleaned)
+   - Method: Correlation analysis (Pearson or Spearman)
+   - Output: Correlation coefficient, scatterplot, and interpretation.
+
+5. **Creative question**
+   - Question: [Briefly state your custom question here.]
+   - Variables: [List variables used.]
+   - Method: [Chi-square, t-test, ANOVA, or correlation.]
+   - Output: Summary of results and interpretation.
+
+## How to Run
+
+1. Open the notebook (`nhanes_inferential_2021_23.ipynb`) in Google Colab or Jupyter.
+2. Run the cells from top to bottom to:
+   - Load and clean the NHANES data
+   - Recode variables
+   - Perform each of the five analyses
+   - View tables, plots, and written summaries
